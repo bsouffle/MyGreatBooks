@@ -1,3 +1,7 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent">
+    
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,82 +12,124 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.bsouffle.mygreatbooks.SearchBookContentActivity">
 
-    <Button
+    <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Scan"
-        android:id="@+id/scanButton" />
+        android:hint="Enter an ISBN"
+        android:singleLine="true"
+        android:id="@+id/searchBar"
+        android:layout_marginBottom="20dp" />
 
-    <ImageView
-        android:layout_width="200px"
-        android:layout_height="300px"
-        android:id="@+id/bookImage"
-        android:layout_below="@+id/scanButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
+    <ImageButton
+        android:id="@+id/scanButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25dp"
-        android:id="@+id/bookTitle"
-        android:layout_below="@+id/scanButton"
-        android:layout_toRightOf="@+id/bookImage" />
+        android:src="@android:drawable/ic_menu_camera"
+        android:text="Button"
+        android:background="@android:color/transparent"
+        android:layout_alignTop="@+id/searchBar"
+        android:layout_alignRight="@+id/searchBar"
+        android:layout_alignEnd="@+id/searchBar"
+        android:layout_marginRight="5dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15dp"
-        android:text="Name"
-        android:ems="10"
-        android:id="@+id/bookAuthor"
-        android:layout_below="@+id/bookTitle"
-        android:layout_toRightOf="@+id/bookImage" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add to my library"
-        android:id="@+id/button"
-        android:layout_alignBottom="@+id/bookImage"
-        android:layout_toRightOf="@+id/bookImage"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="2dp"
-        android:background="@android:color/holo_blue_dark"
-        android:layout_alignBottom="@+id/bookImage"
-        android:layout_alignParentEnd="false"
-        android:id="@+id/view" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Small Text"
-        android:id="@+id/bookRating"
-        android:layout_below="@+id/view"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Small Text"
-        android:id="@+id/bookPages"
-        android:layout_below="@+id/view"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/searchResultPanel"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/bookDescription"
-        android:layout_below="@+id/bookRating"
+        android:orientation="vertical"
+        android:layout_below="@+id/searchBar"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true">
 
+        <ImageView
+            android:layout_width="200px"
+            android:layout_height="300px"
+            android:id="@+id/bookImage"
+            android:layout_marginRight="10dp"
+            android:background="#DDD" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="Title"
+            android:singleLine="true"
+            android:id="@+id/bookTitle"
+            android:layout_toRightOf="@+id/bookImage" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="Author"
+            android:singleLine="true"
+            android:ems="10"
+            android:id="@+id/bookAuthor"
+            android:layout_below="@+id/bookTitle"
+            android:layout_toRightOf="@+id/bookImage" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:text="Add to my library"
+            android:id="@+id/button"
+            android:layout_alignBottom="@+id/bookImage"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:capitalize="words"
+            android:clickable="false"
+            style="@android:style/Widget.Holo.ActionButton"
+            android:background="@android:color/holo_green_light"
+            android:textColor="@android:color/white" />
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/bookImage"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="@android:color/holo_blue_dark"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/view" />
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ratingBar"
+                android:layout_alignTop="@+id/view"
+                android:layout_marginTop="5dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PagesCount"
+                android:id="@+id/bookPages"
+                android:layout_marginTop="12dp"
+                android:layout_below="@+id/view"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:id="@+id/bookDescription"
+                android:layout_below="@+id/ratingBar"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textSize="20dp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
 
 </RelativeLayout>
+</ScrollView>

@@ -9,7 +9,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,13 +24,18 @@ import org.json.JSONObject;
 
 public class SearchBookContentActivity extends Activity implements View.OnClickListener {
 
+    private RelativeLayout searchResultPanel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_book_content);
 
-        Button button = (Button) findViewById(R.id.scanButton);
+        ImageButton button = (ImageButton) findViewById(R.id.scanButton);
         button.setOnClickListener(this);
+
+        searchResultPanel = (RelativeLayout) findViewById(R.id.searchResultPanel);
+        searchResultPanel.setVisibility(View.INVISIBLE);
     }
 
 
@@ -95,7 +103,9 @@ public class SearchBookContentActivity extends Activity implements View.OnClickL
                 ((TextView) findViewById(R.id.bookAuthor)).setText(book.getAuthor());
                 ((TextView) findViewById(R.id.bookDescription)).setText(book.getDescription());
                 ((TextView) findViewById(R.id.bookPages)).setText(String.valueOf(book.getPageCount()));
-                ((TextView) findViewById(R.id.bookRating)).setText(String.valueOf(book.getAverageRating()));
+                ((RatingBar) findViewById(R.id.ratingBar)).setRating((float)book.getAverageRating());
+
+                searchResultPanel.setVisibility(View.VISIBLE);
             }
         }
     }

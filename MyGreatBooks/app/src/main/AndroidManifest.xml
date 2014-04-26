@@ -20,7 +20,8 @@
         </activity>
         <activity
             android:name="com.bsouffle.mygreatbooks.SearchBookContentActivity"
-            android:label="@string/title_activity_search_book_content" >
+            android:label="@string/title_activity_search_book_content"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 
